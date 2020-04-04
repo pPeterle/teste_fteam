@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:teste_inicial/app/modules/home/pages/movies/widgets/movie_controller.dart';
 import 'package:teste_inicial/app/modules/home/pages/movies/widgets/movies_widget.dart';
+
+import 'movie_controller.dart';
 
 class MoviesPage extends StatefulWidget {
   @override

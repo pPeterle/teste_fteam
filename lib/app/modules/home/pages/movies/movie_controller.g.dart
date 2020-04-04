@@ -67,14 +67,6 @@ mixin _$MovieController on _MovieControllerBase, Store {
     return _$fetchFilmsAsyncAction.run(() => super.fetchFilms());
   }
 
-  final _$setFavoriteMovieAsyncAction = AsyncAction('setFavoriteMovie');
-
-  @override
-  Future setFavoriteMovie(Movie movie) {
-    return _$setFavoriteMovieAsyncAction
-        .run(() => super.setFavoriteMovie(movie));
-  }
-
   @override
   String toString() {
     final string =

@@ -19,7 +19,6 @@ class BaseInterceptor extends InterceptorsWrapper {
   onError(DioError e) async {
 
     
-
     if (e.type == DioErrorType.RESPONSE) {
       if (e.response.statusCode == 404)
         return DioError(error: "Erro 404 // Rota Errada");

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:teste_inicial/app/modules/home/pages/movies/widgets/movie_controller.dart';
 import 'package:teste_inicial/app/repository/model/Movie.dart';
+
+import '../movie_controller.dart';
 
 class MovieWidget extends StatelessWidget {
   final Movie movie;
@@ -70,7 +71,7 @@ class MovieWidget extends StatelessWidget {
                             color: Colors.redAccent,
                           ),
                           onPressed: () {
-                            controller.setFavoriteMovie(movie);
+                            // TODO Salvar Filme como favorito
                           }),
                       SizedBox(width: 8),
                       Text(
