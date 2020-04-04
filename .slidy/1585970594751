@@ -1,0 +1,4 @@
+lib/app/modulos/home/page/favorites/favorites_page.dart
+test/app/modulos/home/page/favorites/favorites_page_test.dart
+lib/app/modulos/home/page/favorites/favorites_controller.dart
+test/app/modulos/home/page/favorites/favorites_controller_test.dart
