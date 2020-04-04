@@ -60,6 +60,23 @@ mixin _$MovieController on _MovieControllerBase, Store {
     }, _$moviesAtom, name: '${_$moviesAtom.name}_set');
   }
 
+  final _$favoritesAtom = Atom(name: '_MovieControllerBase.favorites');
+
+  @override
+  ObservableList<Movie> get favorites {
+    _$favoritesAtom.context.enforceReadPolicy(_$favoritesAtom);
+    _$favoritesAtom.reportObserved();
+    return super.favorites;
+  }
+
+  @override
+  set favorites(ObservableList<Movie> value) {
+    _$favoritesAtom.context.conditionallyRunInAction(() {
+      super.favorites = value;
+      _$favoritesAtom.reportChanged();
+    }, _$favoritesAtom, name: '${_$favoritesAtom.name}_set');
+  }
+
   final _$fetchFilmsAsyncAction = AsyncAction('fetchFilms');
 
   @override
@@ -67,10 +84,18 @@ mixin _$MovieController on _MovieControllerBase, Store {
     return _$fetchFilmsAsyncAction.run(() => super.fetchFilms());
   }
 
+  final _$setFavoriteMovieAsyncAction = AsyncAction('setFavoriteMovie');
+
+  @override
+  Future setFavoriteMovie(Movie movie) {
+    return _$setFavoriteMovieAsyncAction
+        .run(() => super.setFavoriteMovie(movie));
+  }
+
   @override
   String toString() {
     final string =
-        'loading: ${loading.toString()},error: ${error.toString()},movies: ${movies.toString()}';
+        'loading: ${loading.toString()},error: ${error.toString()},movies: ${movies.toString()},favorites: ${favorites.toString()}';
     return '{$string}';
   }
 }

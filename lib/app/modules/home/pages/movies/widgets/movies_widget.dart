@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:teste_inicial/app/repository/model/Movie.dart';
 
@@ -65,14 +66,17 @@ class MovieWidget extends StatelessWidget {
                 Expanded(
                   child: Row(
                     children: <Widget>[
-                      IconButton(
-                          icon: Icon(
-                            movie.isFavorite ?? false ? Icons.favorite : Icons.favorite_border,
-                            color: Colors.redAccent,
-                          ),
-                          onPressed: () {
-                            // TODO Salvar Filme como favorito
-                          }),
+                      IconButton(icon: Observer(builder: (_) {
+                        return Icon(
+                          controller.favorites?.contains(movie) ??
+                                  false
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: Colors.redAccent,
+                        );
+                      }), onPressed: () {
+                        controller.setFavoriteMovie(movie);
+                      }),
                       SizedBox(width: 8),
                       Text(
                         'Favorite',

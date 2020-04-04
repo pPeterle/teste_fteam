@@ -7,7 +7,7 @@ import 'package:teste_inicial/app/repository/movie_repository.dart';
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => MovieRepository(i.get())),
+        Bind((i) => MovieRepository(i.get(), i.get())),
         Bind((i) => HomeController()),
         Bind((i) => MovieController()),
       ];

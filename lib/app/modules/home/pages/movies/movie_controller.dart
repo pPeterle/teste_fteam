@@ -17,8 +17,10 @@ abstract class _MovieControllerBase with Store {
 
   @observable
   ObservableList<Movie> movies = ObservableList();
+  @observable
+  ObservableList<Movie> favorites = ObservableList();
 
-  _MovieControllerBase(){
+  _MovieControllerBase() {
     fetchFilms();
   }
 
@@ -27,10 +29,24 @@ abstract class _MovieControllerBase with Store {
     loading = true;
     try {
       movies = (await _repository.fetchFilms()).asObservable();
+      favorites = (await _repository.fetchFavoritesFilms())
+          .asObservable();
     } catch (e) {
       print(e);
       error = e.message;
     }
     loading = false;
+  }
+
+  @action
+  setFavoriteMovie(Movie movie) async {
+    try {
+      await _repository.saveFavoriteMovie(movie);
+      favorites = (await _repository.fetchFavoritesFilms())
+          .asObservable();
+    } catch (e) {
+      print(e);
+      error = e.message;
+    }
   }
 }

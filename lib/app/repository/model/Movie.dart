@@ -1,4 +1,6 @@
-class Movie {
+import 'package:equatable/equatable.dart';
+
+class Movie extends Equatable {
   String title;
   int episodeId;
   String openingCrawl;
@@ -13,7 +15,6 @@ class Movie {
   String created;
   String edited;
   String url;
-  bool isFavorite;
 
   Movie(
       {this.title,
@@ -29,7 +30,6 @@ class Movie {
       this.species,
       this.created,
       this.edited,
-      this.isFavorite,
       this.url});
 
   Movie.fromJson(Map<String, dynamic> json) {
@@ -47,7 +47,6 @@ class Movie {
     created = json['created'];
     edited = json['edited'];
     url = json['url'];
-    isFavorite = json['isFavorite'];
   }
 
   Map<String, dynamic> toJson() {
@@ -66,7 +65,24 @@ class Movie {
     data['created'] = this.created;
     data['edited'] = this.edited;
     data['url'] = this.url;
-    data['isFavorite'] = this.isFavorite;
     return data;
   }
+
+  @override
+  List<Object> get props => [
+        title,
+        episodeId,
+        openingCrawl,
+        director,
+        producer,
+        releaseDate,
+        characters,
+        planets,
+        starships,
+        vehicles,
+        species,
+        created,
+        edited,
+        url,
+      ];
 }
