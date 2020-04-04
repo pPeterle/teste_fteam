@@ -12,7 +12,7 @@ class MovieRepository extends Disposable {
 
   Future<List<Movie>> fetchFilms() async {
     try {
-      final response = await _dio.client.get(MOVIES_URL + 'q');
+      final response = await _dio.client.get(MOVIES_URL);
       return (response.data as List)
           .map((json) => Movie.fromJson(json))
           .toList();
